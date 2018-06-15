@@ -16,17 +16,17 @@ Handling events with React elements is very similar to handling events on DOM el
 For example, the HTML:
 
 ```html
-<button onclick="activateLasers()">
+<Button onclick="activateLasers()">
   Activate Lasers
-</button>
+</Button>
 ```
 
 is slightly different in React:
 
 ```js{1}
-<button onClick={activateLasers}>
+<Button onClick={activateLasers}>
   Activate Lasers
-</button>
+</Button>
 ```
 
 Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
@@ -78,9 +78,9 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <Button onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
-      </button>
+      </Button>
     );
   }
 }
@@ -109,9 +109,9 @@ class LoggingButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <Button onClick={this.handleClick}>
         Click me
-      </button>
+      </Button>
     );
   }
 }
@@ -130,9 +130,9 @@ class LoggingButton extends React.Component {
   render() {
     // This syntax ensures `this` is bound within handleClick
     return (
-      <button onClick={(e) => this.handleClick(e)}>
+      <Button onClick={(e) => this.handleClick(e)}>
         Click me
-      </button>
+      </Button>
     );
   }
 }
@@ -145,8 +145,8 @@ The problem with this syntax is that a different callback is created each time t
 Inside a loop it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
 
 ```js
-<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
-<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+<Button onClick={(e) => this.deleteRow(id, e)}>Delete Row</Button>
+<Button onClick={this.deleteRow.bind(this, id)}>Delete Row</Button>
 ```
 
 The above two lines are equivalent, and use [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) and [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) respectively.
